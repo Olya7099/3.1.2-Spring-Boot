@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Page</title>
+</head>
+<body>
+<div th:replace="logout :: logout"></div>
+<h2>User Information</h2>
+<p th:if="${user != null}">
+  <strong>Username:</strong> <span th:text="${user.username}"></span><br>
+  <strong>Email:</strong> <span th:text="${user.email}"></span><br>
+  <strong>Roles:</strong> <span th:each="role : ${user.roles}" th:text="${role.name} + ', '"></span>
+</p>
+<p th:unless="${user != null}">
+  No user information available.
+</p>
+</body>
+</html>
