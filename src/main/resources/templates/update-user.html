@@ -15,9 +15,21 @@
   <label for="email">Email</label>
   <input type="text" th:field="*{email}" id="email" placeholder="email">
   <br/>
-  <label for="roles">Role</label>
-  <input type="text" th:field="*{roles}" id="roles" placeholder="Roles">
+  <label for="password">Password (оставьте пустым, чтобы не менять)</label>
+  <input type="password" name="password" id="password" placeholder="New password">
   <br/>
+
+
+  <label for="roles">Roles:</label>
+  <select name="rolesIds" id="roles" multiple>
+    <option th:each="role : ${roles}"
+            th:value="${role.id}"
+            th:text="${role.name}"
+            th:selected="${user.roles.contains(role)}">
+    </option>
+  </select>
+  <br/>
+
   <input type="submit" value="Update user">
 </form>
 </body>
